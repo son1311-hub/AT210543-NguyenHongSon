@@ -1,21 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void swap(double *a, double *b)
+double hamMu (double x, int y)
 {
-    double temp;
-    temp = *a;
-    *a = *b;
-    *b = temp;
+    if (y==0)
+    {
+        return 1;
+    }
+    else if (y>0)
+    {
+        return x*hamMu(x, y-1);
+    }
+    else
+    {
+        return 1/hamMu(x, -y);
+    }
 }
 
 int main()
 {
-    double a, b;
-    printf("Nhap lan luot a va b: ");
-    scanf("%lf %lf", &a, &b);
-    printf("a = %.5f, b= %.5f\n", a, b);
-    swap(&a, &b);
-    printf("Sau khi hoan doi: a = %.5f, b=%.5f", a, b);
+    double x;
+    int y;
+    printf("Nhap x va y: ");
+    scanf("%lf %d", &x, &y);
+    printf("x^y =  %lf" ,hamMu(x, y));
     return 0;
 }

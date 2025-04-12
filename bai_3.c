@@ -1,45 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void swap(int *a, int *b)
-{
-    int temp;
-    temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
-void nhapMang(int *x, int len){
-    for (int i=0; i<len; i++)
+int fibonacci(unsigned int n)
+{   
+    if (n==1)
     {
-        scanf("%d", &x[i]);
+        return 0;
     }
-}
-
-void SapXep(int *a, int len)
-{
-    int i, j;
-    for (i=len-1; i>0; i--){
-        for (j=0 ; j<i; j++){
-            if (a[j]>a[j+1]){
-                swap(&a[j], &a[j+1]);
-            }
-        }
+    else if(n==2)
+    {
+        return 1;
+    }
+    else if (n>2)
+    {
+        return fibonacci(n-1) + fibonacci(n-2);
     }
 }
 
 int main()
 {
-    //freopen("/home/cao/Documents/input", "r", stdin);
-    int len;
-    printf("Nhap do dai mang: ");
-    scanf("%d", &len);
-    int *mang = (int*)malloc(len*sizeof(int));
-    printf("Nhap mang: ");
-    nhapMang(mang, len);
-    SapXep(mang, len);
-    printf("min: %d, max: %d", mang[0], mang[len-1]);
-    free(mang);
+    unsigned int n;
+    printf("Nhap n: ");
+    scanf("%u", &n);
+    printf("So fibonacci thu %u = %d" ,n, fibonacci(n));
     return 0;
 }
-

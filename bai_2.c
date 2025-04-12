@@ -1,12 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int giaithua(int n)
+{
+    if (n>0)
+    {
+        return n * giaithua(n-1);
+    }
+    else
+    {
+        return 1;
+    }
+}
+
 int main()
 {
-    int mang[10]={1,2,3,4,5,6,7,8,9,0};
-    for (int i=0; i<10; i++)
-    {
-        printf("%d ", *(mang+i));
-    }
+    int n;
+    printf("Nhap n: ");
+    scanf("%d", &n);
+    printf("n! =  %d" ,giaithua(n));
     return 0;
 }
